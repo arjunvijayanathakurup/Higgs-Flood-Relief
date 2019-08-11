@@ -12,7 +12,7 @@
 .green-square {
   background: url(./floater.jpeg);
   width: 95%;
-  height: 400px;
+  height: 84vh;
   margin: 0 auto;
   background-size: cover;
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@
 .yellow-square {
   background: url(./hand.jpeg);
   width: 95%;
-  height: 400px;
+  height: 84vh;
   margin: 0 auto;
   background-size: cover;
   background-repeat: no-repeat;
