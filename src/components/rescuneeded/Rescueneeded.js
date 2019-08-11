@@ -1,28 +1,42 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import {Form, Button} from 'react-bootstrap';
-import firebase from '../../firebase';
+import firebase from 'firebase';
 import { Redirect } from 'react-router-dom';
-import Navbar from '../navbar/Navbarlay'
+import Navbar from '../navbar/Navbarlay';
+import { RadioGroup, RadioButton } from 'react-radio-buttons';
 
 function VolunteerRegistration() {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const [lat, setLat] = useState('');
     const [log, setLog] = useState('');
-    const [check, setCheck] = useState('');
     const [details, setDetails] = useState('');
     const [toHome, setTohome] = useState(false);
-
-
+    const [loc, setLocation] = useState('true');
+    console.log(loc);
     function onSubmit(e){
         const regex = /<[^>]*script/;   
         const regexnum = /^\d*$/;
+        
         if(name.match(regex) || number.match(regex) || details.match(regex))
         {   
             return <Redirect to="/" />
         }
         else{
-            
+            if(details)
+            {
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(function(position){
+                    console.log(position.coords);
+                    // console.log(position.coords.longitude)
+                    lat = position.coords.latitude;
+                    log = position.coords.longitude;
+                });
+            }
+            else{
+                console.log("location not allowed")
+            }
+            }
             e.preventDefault()
             firebase
             .firestore()
@@ -65,21 +79,26 @@ function VolunteerRegistration() {
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                <Form.Group controlId="formBasicemail">
-                    <Form.Control type="text" placeholder="Enter Location" value={details}  onChange={e => setDetails(e.currentTarget.value)} />
+                <Form.Group controlId="formBasiclocation">
+                    
+                    <RadioGroup  horizontal>
+                        <RadioButton value="true">
+                            current location
+                    </RadioButton>
+                    <RadioButton value="false" onChange={e => setDetails("Enter the location")}>
+                            type in location
+                    </RadioButton>
+                    </RadioGroup>
                     <Form.Text className="text-muted" >
                     </Form.Text>
-                </Form.Group>
-                <Form.Group controlId="formbasictick">
-                    <Form.Label>Use Current Location</Form.Label>
-                    <Form.Control type="checkbox" value='true'  onChange={e => setCheck(e.currentTarget.value)} />
+                    <Form.Control type="text" placeholder="Enter location if not current location" value={details}  onChange={e => setDetails(e.currentTarget.value)} />
                     <Form.Text className="text-muted" >
                     </Form.Text>
                 </Form.Group>
                 <Button variant="primary" size="lg" type="submit">
                     Submit
                 </Button>
-                <Button variant="danger" size="lg" type="cancel" >
+                <Button variant="danger" size="lg" type="cancel">
                     Cancel
                 </Button>
             </Form>
@@ -90,3 +109,4 @@ function VolunteerRegistration() {
 }
 
 export default VolunteerRegistration;
+

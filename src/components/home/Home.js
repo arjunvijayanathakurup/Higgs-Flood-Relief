@@ -1,29 +1,24 @@
 import React from 'react'
 import Navbar from '../navbar/Navbarlay'
+import {Link} from 'react-router-dom'
 import './home.css'
 
  function Home() {
     return (
         <div>
             <Navbar />
-            <div className="container">
-            <div className="row">
-                <div className="col-sm-6">
-                <a href="/rescue"><div className="green-square">
-                    <h1 className="title-header"> Want Help? </h1>
+            <div class="row">
+                <div class="col-sm-6 green-square">
+                    <Link to="/rescue">
+                    <h1 class="title-header"> Need Help? </h1>
+                    </Link>
                 </div>
-                </a>
-                </div>
-                <div className="col-sm-6">
-                <a href="/volunteer">
-                <div className="yellow-square">
-                    <h1 className="title-header"> Offer Help? </h1>
-                    
-                </div>
-                </a>
+                <div class="col-sm-6 yellow-square">
+                    <Link to="/rescue">
+                        <h1 class="title-header"> Offer Help? </h1>
+                    </Link>
                 </div>
             </div>
-        </div>
         </div>
     )
 }
