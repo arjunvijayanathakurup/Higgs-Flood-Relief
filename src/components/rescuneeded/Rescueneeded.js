@@ -71,6 +71,7 @@ function VolunteerRegistration() {
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formbasictick">
+                    <Form.Label>Use Current Location</Form.Label>
                     <Form.Control type="checkbox" value='true'  onChange={e => setCheck(e.currentTarget.value)} />
                     <Form.Text className="text-muted" >
                     </Form.Text>
@@ -78,7 +79,7 @@ function VolunteerRegistration() {
                 <Button variant="primary" size="lg" type="submit">
                     Submit
                 </Button>
-                <Button variant="danger" size="lg" type="cancel">
+                <Button variant="danger" size="lg" type="cancel" >
                     Cancel
                 </Button>
             </Form>

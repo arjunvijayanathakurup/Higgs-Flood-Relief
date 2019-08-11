@@ -1,0 +1,26 @@
+.container{
+    color: aliceblue;
+    font-size: 15px;
+}
+
+.col{
+    width: 100px;
+    height: 300px;
+    padding: 3%;
+    border: 1px solid black;
+    overflow-y:scroll;
+    margin: 1%;
+}
+.colHead{
+    border: 2px solid black;
+    width: 100px;
+    margin: 1%;
+    
+}
+
+.formnotif{
+    width: 50%;
+    height: 50%;
+    border: 1px solid rgb(216, 164, 164);
+    overflow: hidden;
+}
