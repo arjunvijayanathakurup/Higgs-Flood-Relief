@@ -48,7 +48,7 @@ function VolunteerRegistration() {
         return (
             <>
             <Navbar />
-            <div style={{marginTop: '15%', width: '30%', height: '50%', marginLeft: '35%'}}>
+            <div style={{marginTop: '5%', width: '30%', height: '50%', marginLeft: '35%'}}>
                 <h1>Volunteer Registration</h1>
             <Form onSubmit={onSubmit}>
                 <Form.Group controlId="formBasicname">
@@ -61,19 +61,25 @@ function VolunteerRegistration() {
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                <Form.Group controlId="formBasicemail">
+                <Form.Group controlId="formBasicEmail">
                     <Form.Control type="email" placeholder="Enter email (Optional)" value={email}  onChange={e => setEmail(e.currentTarget.value)} />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                <Form.Group controlId="formBasicaddress">
+                <Form.Group controlId="formBasicEmail">
                     <Form.Control type="text" placeholder="Enter Home Address" value={address} onChange={e => setAddress(e.currentTarget.value)} required />
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                    <Form.Text className="text-muted">
+                    </Form.Text>
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
                 <Button variant="primary" size="lg" type="submit">
                     Submit
                 </Button>
+                <Form.Text className="text-muted">
+                    </Form.Text>
                 <Button variant="danger" size="lg" type="cancel">
                     Cancel
                 </Button>
