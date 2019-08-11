@@ -14,6 +14,19 @@ function VolunteerRegistration() {
     const [toHome, setTohome] = useState(false);
     const [loc, setLocation] = useState('true');
     console.log(loc);
+    function setradio()
+    {
+        if(loc)
+        {
+            setLocation(false);
+            setDetails("Enter location if not current location");
+        }
+        else
+        {
+            setDetails("Enter location");
+            setLocation(true);
+        }
+    }
     function onSubmit(e){
         const regex = /<[^>]*script/;   
         const regexnum = /^\d*$/;
@@ -29,8 +42,8 @@ function VolunteerRegistration() {
                 navigator.geolocation.getCurrentPosition(function(position){
                     console.log(position.coords);
                     // console.log(position.coords.longitude)
-                    lat = position.coords.latitude;
-                    log = position.coords.longitude;
+                    setLat(position.coords.latitude);
+                    setLog(position.coords.longitude);
                 });
             }
             else{
@@ -66,8 +79,9 @@ function VolunteerRegistration() {
         return (
             <>
             <Navbar />
-            <div style={{marginTop: '15%', width: '30%', height: '50%', marginLeft: '35%'}}>
-                <h1>Rescue Needed</h1>
+            <h1 style={{marginTop: '3%',marginBottom:'20px', textAlign: 'center'}}>Rescue Needed</h1>
+            <div className="container">
+                
             <Form onSubmit={onSubmit}>
                 <Form.Group controlId="formBasicname">
                     <Form.Control type="text" placeholder="Enter Full name" value={name} autoFocus onChange={e => setName(e.currentTarget.value)} required/>
@@ -79,26 +93,20 @@ function VolunteerRegistration() {
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
+                <Form.Group controlId="formBasicChecbox">
+                    <Form.Check type="checkbox" label="use current location" onChange={e => setradio()} style={{color: 'black'}}/>
+                </Form.Group>   
                 <Form.Group controlId="formBasiclocation">
-                    
-                    <RadioGroup  horizontal>
-                        <RadioButton value="true">
-                            current location
-                    </RadioButton>
-                    <RadioButton value="false" onChange={e => setDetails("Enter the location")}>
-                            type in location
-                    </RadioButton>
-                    </RadioGroup>
                     <Form.Text className="text-muted" >
                     </Form.Text>
                     <Form.Control type="text" placeholder="Enter location if not current location" value={details}  onChange={e => setDetails(e.currentTarget.value)} />
                     <Form.Text className="text-muted" >
                     </Form.Text>
                 </Form.Group>
-                <Button variant="primary" size="lg" type="submit">
+                <Button variant="secondary" size="md" type="submit" style={{ marginRight: '10px',marginTop: '10px'}}>
                     Submit
                 </Button>
-                <Button variant="danger" size="lg" type="cancel">
+                <Button variant="light" size="md" type="cancel" style={{ marginTop: '10px'}}>
                     Cancel
                 </Button>
             </Form>
@@ -109,3 +117,4 @@ function VolunteerRegistration() {
 }
 
 export default VolunteerRegistration;
+

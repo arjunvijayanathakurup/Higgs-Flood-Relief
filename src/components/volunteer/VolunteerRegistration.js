@@ -48,8 +48,9 @@ function VolunteerRegistration() {
         return (
             <>
             <Navbar />
-            <div style={{marginTop: '15%', width: '30%', height: '50%', marginLeft: '35%'}}>
-                <h1>Volunteer Registration</h1>
+            <h1 style={{marginTop: '3%',marginBottom:'20px', textAlign: 'center'}}>Volunteer Registration</h1>
+            <div className="container">
+                
             <Form onSubmit={onSubmit}>
                 <Form.Group controlId="formBasicname">
                     <Form.Control type="text" placeholder="Enter Full name" value={name} autoFocus onChange={e => setName(e.currentTarget.value)} required/>
@@ -61,20 +62,25 @@ function VolunteerRegistration() {
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                <Form.Group controlId="formBasicemail">
+                <Form.Group controlId="formBasicEmail">
                     <Form.Control type="email" placeholder="Enter email (Optional)" value={email}  onChange={e => setEmail(e.currentTarget.value)} />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                <Form.Group controlId="formBasicaddress">
+                <Form.Group controlId="formBasicEmail">
                     <Form.Control type="text" placeholder="Enter Home Address" value={address} onChange={e => setAddress(e.currentTarget.value)} required />
                     <Form.Text className="text-muted">
                     </Form.Text>
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                    <Form.Text className="text-muted">
+                    </Form.Text>
                 </Form.Group>
-                <Button variant="primary" size="lg" type="submit">
+                <Button variant="secondary" size="md" type="submit" style={{ marginRight: '10px',marginTop: '10px'}}>
                     Submit
                 </Button>
-                <Button variant="danger" size="lg" type="cancel">
+                
+                <Button variant="light" size="md" type="cancel" style={{ marginTop: '10px'}}>
                     Cancel
                 </Button>
             </Form>

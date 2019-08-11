@@ -15,7 +15,7 @@ var navStyle = {
   };
   var navStyle3 = {
     paddingRight: "40px",
-    paddingRight: "20px",
+    paddingLeft: "20px",
     
   };
 function Navbarlay() {
@@ -56,7 +56,6 @@ function Navbarlay() {
                 </ul>
             </div>
         </nav>
-        
     )
 }
 

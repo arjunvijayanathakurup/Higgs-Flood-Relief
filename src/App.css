@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   color: #343A40;
-
 }
 
 .bg_main{
@@ -1635,7 +1634,7 @@ h1, h2, h3, h4, h5,
     flex: 0 0 50px;
     border-radius: 50%; }
 body{
-  background: black;
+  background: rgb(240, 237, 237);
 }
 @keyframes App-logo-spin {
   from {
