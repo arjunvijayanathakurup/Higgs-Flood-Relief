@@ -14,6 +14,19 @@ function VolunteerRegistration() {
     const [toHome, setTohome] = useState(false);
     const [loc, setLocation] = useState('true');
     console.log(loc);
+    function setradio()
+    {
+        if(loc)
+        {
+            setLocation(false);
+            setDetails("Enter location if not current location");
+        }
+        else
+        {
+            setDetails("Enter location");
+            setLocation(true);
+        }
+    }
     function onSubmit(e){
         const regex = /<[^>]*script/;   
         const regexnum = /^\d*$/;
@@ -29,8 +42,8 @@ function VolunteerRegistration() {
                 navigator.geolocation.getCurrentPosition(function(position){
                     console.log(position.coords);
                     // console.log(position.coords.longitude)
-                    lat = position.coords.latitude;
-                    log = position.coords.longitude;
+                    setLat(position.coords.latitude);
+                    setLog(position.coords.longitude);
                 });
             }
             else{
@@ -66,7 +79,7 @@ function VolunteerRegistration() {
         return (
             <>
             <Navbar />
-            <div style={{marginTop: '15%', width: '30%', height: '50%', marginLeft: '35%'}}>
+            <div style={{marginTop: '5%', width: '30%', height: '50%', marginLeft: '35%'}}>
                 <h1>Rescue Needed</h1>
             <Form onSubmit={onSubmit}>
                 <Form.Group controlId="formBasicname">
@@ -79,16 +92,10 @@ function VolunteerRegistration() {
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
+                <Form.Group controlId="formBasicChecbox">
+                    <Form.Check type="checkbox" label="use current location" onChange={e => setradio()}/>
+                </Form.Group>   
                 <Form.Group controlId="formBasiclocation">
-                    
-                    <RadioGroup  horizontal>
-                        <RadioButton value="true">
-                            current location
-                    </RadioButton>
-                    <RadioButton value="false" onChange={e => setDetails("Enter the location")}>
-                            type in location
-                    </RadioButton>
-                    </RadioGroup>
                     <Form.Text className="text-muted" >
                     </Form.Text>
                     <Form.Control type="text" placeholder="Enter location if not current location" value={details}  onChange={e => setDetails(e.currentTarget.value)} />
