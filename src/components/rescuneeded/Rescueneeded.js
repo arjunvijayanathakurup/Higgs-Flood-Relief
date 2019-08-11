@@ -20,7 +20,17 @@ function VolunteerRegistration() {
             return <Redirect to="/" />
         }
         else{
-            getLocation();
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(function(position){
+                    console.log(position.coords);
+                    // console.log(position.coords.longitude)
+                    lat = position.coords.latitude;
+                    log = position.coords.longitude;
+                });
+            }
+            else{
+                console.log("location not allowed")
+            }
             e.preventDefault()
             firebase
             .firestore()
@@ -41,19 +51,6 @@ function VolunteerRegistration() {
             })
             setTohome(true);
         }
-        function getLocation(){
-            if (navigator.getLocation){
-                navigator.geolocation.getCurrentPosition(ShowPosition);
-            }
-            else{
-                console.log("location not allowed")
-            }
-        }
-        function ShowPosition(position){
-            setLat(position.coords.latitude);
-            setLog(position.coords.longitude);
-        }
-    
     }
     if (toHome){
         return <Redirect to="/" />
@@ -76,10 +73,10 @@ function VolunteerRegistration() {
                 </Form.Group>
                 <Form.Group controlId="formBasicemail">
                     <Form.Control type="email" placeholder="Enter email (Optional)" value={details}  onChange={e => setDetails(e.currentTarget.value)} />
-                    <Form.Text className="text-muted">
+                    <Form.Text className="text-muted" >
                     </Form.Text>
                 </Form.Group>
-                <Button variant="primary" size="lg" type="submit">
+                <Button variant="primary" size="lg" type="submit"> onChange={e=> setLat()}
                     Submit
                 </Button>
                 <Button variant="danger" size="lg" type="cancel">
