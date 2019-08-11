@@ -9,7 +9,7 @@ import './home.css'
             <div class="row">
                 <div class="col-sm-6 green-square">
                     <a href="">
-                    <h1 class="title-header"> Want Help? </h1>
+                    <h1 class="title-header"> Need Help? </h1>
                     
                     </a>
                 </div>
