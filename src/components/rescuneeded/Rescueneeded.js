@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Form, Button} from 'react-bootstrap';
 import firebase from '../../firebase';
 import { Redirect } from 'react-router-dom';
+import Navbar from '../navbar/Navbarlay'
 
 function VolunteerRegistration() {
     const [name, setName] = useState('');
@@ -58,8 +59,10 @@ function VolunteerRegistration() {
     else
     {
         return (
+            <>
+            <Navbar />
             <div style={{marginTop: '15%', width: '30%', height: '50%', marginLeft: '35%'}}>
-                <h1>Volunteer Registration</h1>
+                <h1>Rescue Needed</h1>
             <Form onSubmit={onSubmit}>
                 <Form.Group controlId="formBasicname">
                     <Form.Control type="text" placeholder="Enter Full name" value={name} autoFocus onChange={e => setName(e.currentTarget.value)} required/>
@@ -76,7 +79,7 @@ function VolunteerRegistration() {
                     <Form.Text className="text-muted" >
                     </Form.Text>
                 </Form.Group>
-                <Button variant="primary" size="lg" type="submit"> onChange={e=> setLat()}
+                <Button variant="primary" size="lg" type="submit">
                     Submit
                 </Button>
                 <Button variant="danger" size="lg" type="cancel">
@@ -84,6 +87,7 @@ function VolunteerRegistration() {
                 </Button>
             </Form>
             </div>
+            </>
         )
     }
 }

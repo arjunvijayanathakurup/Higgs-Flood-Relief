@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Form, Button} from 'react-bootstrap';
 import firebase from '../../firebase';
 import { Redirect } from 'react-router-dom';
+import Navbar from '../navbar/Navbarlay'
 
 function VolunteerRegistration() {
     const [name, setName] = useState('');
@@ -45,6 +46,8 @@ function VolunteerRegistration() {
     else
     {
         return (
+            <>
+            <Navbar />
             <div style={{marginTop: '15%', width: '30%', height: '50%', marginLeft: '35%'}}>
                 <h1>Volunteer Registration</h1>
             <Form onSubmit={onSubmit}>
@@ -76,6 +79,7 @@ function VolunteerRegistration() {
                 </Button>
             </Form>
             </div>
+            </>
         )
     }
 }
