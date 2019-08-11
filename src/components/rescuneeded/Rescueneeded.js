@@ -9,6 +9,7 @@ function VolunteerRegistration() {
     const [number, setNumber] = useState('');
     const [lat, setLat] = useState('');
     const [log, setLog] = useState('');
+    const [check, setCheck] = useState('');
     const [details, setDetails] = useState('');
     const [toHome, setTohome] = useState(false);
 
@@ -21,17 +22,7 @@ function VolunteerRegistration() {
             return <Redirect to="/" />
         }
         else{
-            if (navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(function(position){
-                    console.log(position.coords);
-                    // console.log(position.coords.longitude)
-                    lat = position.coords.latitude;
-                    log = position.coords.longitude;
-                });
-            }
-            else{
-                console.log("location not allowed")
-            }
+            
             e.preventDefault()
             firebase
             .firestore()
@@ -75,7 +66,12 @@ function VolunteerRegistration() {
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicemail">
-                    <Form.Control type="email" placeholder="Enter email (Optional)" value={details}  onChange={e => setDetails(e.currentTarget.value)} />
+                    <Form.Control type="text" placeholder="Enter Location" value={details}  onChange={e => setDetails(e.currentTarget.value)} />
+                    <Form.Text className="text-muted" >
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group controlId="formbasictick">
+                    <Form.Control type="checkbox" value='true'  onChange={e => setCheck(e.currentTarget.value)} />
                     <Form.Text className="text-muted" >
                     </Form.Text>
                 </Form.Group>

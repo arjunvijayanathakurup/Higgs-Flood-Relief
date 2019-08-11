@@ -6,18 +6,18 @@ import './home.css'
     return (
         <div>
             <Navbar />
-            <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                <a href="/rescue"><div class="green-square">
-                    <h1 class="title-header"> Want Help? </h1>
+            <div className="container">
+            <div className="row">
+                <div className="col-sm-6">
+                <a href="/rescue"><div className="green-square">
+                    <h1 className="title-header"> Want Help? </h1>
                 </div>
                 </a>
                 </div>
-                <div class="col-sm-6">
+                <div className="col-sm-6">
                 <a href="/volunteer">
-                <div class="yellow-square">
-                    <h1 class="title-header"> Offer Help? </h1>
+                <div className="yellow-square">
+                    <h1 className="title-header"> Offer Help? </h1>
                     
                 </div>
                 </a>
