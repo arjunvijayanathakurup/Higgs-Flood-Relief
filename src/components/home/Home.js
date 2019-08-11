@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../navbar/Navbarlay'
+import {Link} from 'react-router-dom'
 import './home.css'
 
  function Home() {
@@ -8,18 +9,14 @@ import './home.css'
             <Navbar />
             <div class="row">
                 <div class="col-sm-6 green-square">
-                    <a href="">
+                    <Link to="/rescue">
                     <h1 class="title-header"> Need Help? </h1>
-                    
-                    </a>
+                    </Link>
                 </div>
                 <div class="col-sm-6 yellow-square">
-                    <a href="">
-                    
-                    <h1 class="title-header"> Offer Help? </h1>
-                    
-                    
-                    </a>
+                    <Link to="/rescue">
+                        <h1 class="title-header"> Offer Help? </h1>
+                    </Link>
                 </div>
             </div>
         </div>
