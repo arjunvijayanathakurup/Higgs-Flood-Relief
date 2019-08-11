@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {Navbar, Nav} from 'react-bootstrap'
-
+import './navstyle.css'
 var navStyle = {
    
     paddingRight: "40px",
@@ -24,16 +24,16 @@ function Navbarlay() {
             <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <Nav.Link href ="/" style={navStyle3}>Home</Nav.Link>
+                        <Nav.Link href ="/" className="navStyle3" >Home</Nav.Link>
                     </li>
                     <li className="nav-item">
-                        <Nav.Link href="/about" style={navStyle}>About</Nav.Link>
+                        <Nav.Link href="/about" className="navStyle">About</Nav.Link>
                     </li>
                     <li className="nav-item">
-                        <Nav.Link href="/rescue" style={navStyle}>Rescue</Nav.Link>
+                        <Nav.Link href="/rescue" className="navStyle">Rescue</Nav.Link>
                     </li>
                     <li className="nav-item">
-                        <Nav.Link href="/volunteer" style={navStyle}>Volunteer</Nav.Link>
+                        <Nav.Link href="/volunteer" className="navStyle">Volunteer</Nav.Link>
                     </li>
                     
                 </ul>
@@ -51,7 +51,7 @@ function Navbarlay() {
                 <ul className="navbar-nav ml-auto">
                     
                     <li className="nav-item">
-                        <Nav.Link className="nav-link" href="/signin" style={navStyle2}>Sign In</Nav.Link>
+                        <Nav.Link className="nav-link" href="/signin" className="navStyle2">Sign In</Nav.Link>
                     </li>
                 </ul>
             </div>

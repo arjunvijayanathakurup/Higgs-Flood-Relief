@@ -1,0 +1,15 @@
+@media only screen and (min-width : 1025px) {
+    .navStyle.navStyle.navStyle {
+        /* styles here */
+        padding-right: 40px;
+    }
+    .navStyle2.navStyle2.navStyle2 {
+        /* styles here */
+        padding-right: 20px;
+    }
+    .navStyle3.navStyle3.navStyle3 {
+       
+        padding-right: 40px;
+        padding-left: 20px;
+    }
+}
