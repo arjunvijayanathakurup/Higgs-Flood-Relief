@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React  from 'react';
+import axios from 'axios';
+import {BrowserRouter, Switch, Route } from 'react-router-dom';
+import VolunteerRegistration from './components/volunteer/VolunteerRegistration';
+import Rescueneeded from './components/rescuneeded/Rescueneeded';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+	return(
+		<BrowserRouter>
+			<div className="App">
+				<Switch>
+					<Route  path='/volunteer' component = {VolunteerRegistration} />
+					<Route  path='/rescue' component = {Rescueneeded} />
+
+				</Switch>
+			</div>
+		</BrowserRouter>
+	)
 }
 
 export default App;
