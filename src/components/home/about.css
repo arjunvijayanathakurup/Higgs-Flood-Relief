@@ -1,0 +1,17 @@
+.about-section{
+    text-align: left;
+    margin-top: 20px;
+}
+
+.about-section{
+    background-image: url(./logo2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
+}
+
+.about-text{
+    text-align: left;
+    color: black;
+}

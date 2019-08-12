@@ -5,6 +5,7 @@ import VolunteerRegistration from './components/volunteer/VolunteerRegistration'
 import Rescueneeded from './components/rescuneeded/Rescueneeded';
 import NewAnnouncment from './components/announcment/NewAnnouncment';
 import Home from './components/home/Home';
+import About from './components/home/About';
 import './App.css';
 import Signin from './components/auth/Signin';
 import Admin from './components/admin/Admin';
@@ -18,6 +19,7 @@ function App(){
 					<Route  path='/volunteer' component = {VolunteerRegistration} />
 					<Route  path='/rescue' component = {Rescueneeded} />
 					<Route  path='/signin' component = {Signin} />
+					<Route  path='/about' component = {About} />
 					<Route 	path='/admin' component={Admin} />
 					<Route  path='/newannouncement' component = {NewAnnouncment} />
 
