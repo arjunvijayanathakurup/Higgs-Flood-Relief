@@ -23,11 +23,8 @@ function Navbarlay() {
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
             <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active">
+                <li className="nav-item">
                         <Nav.Link href ="/" className="navStyle3" >Home</Nav.Link>
-                    </li>
-                    <li className="nav-item">
-                        <Nav.Link href="/about" className="navStyle">About</Nav.Link>
                     </li>
                     <li className="nav-item">
                         <Nav.Link href="/rescue" className="navStyle">Rescue</Nav.Link>
@@ -40,6 +37,9 @@ function Navbarlay() {
                     </li>
                     <li className="nav-item">
                         <Nav.Link href="/helpneeded" className="navStyle">Help Needed</Nav.Link>
+                    </li>
+                    <li className="nav-item">
+                        <Nav.Link href="/about" className="navStyle">About</Nav.Link>
                     </li>
                     
                 </ul>
@@ -57,7 +57,7 @@ function Navbarlay() {
                 <ul className="navbar-nav ml-auto">
                     
                     <li className="nav-item">
-                        <Nav.Link className="nav-link" href="/" className="navStyle2"></Nav.Link>
+                        <Nav.Link className="nav-link" href="/signin" className="navStyle2"></Nav.Link>
                     </li>
                 </ul>
             </div>

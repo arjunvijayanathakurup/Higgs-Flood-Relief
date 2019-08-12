@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect} from 'react'
 import firebase from '../../firebase'
 import Navbar from '../navbar/Navbarlay';
@@ -51,5 +52,7 @@ function NewAnnouncment() {
             </div> 
     )
 }
+
+
 
 export default NewAnnouncment
