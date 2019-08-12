@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import firebase from '../../firebase';
 import { Redirect } from 'react-router-dom';
 import {Form, Button} from 'react-bootstrap';
+import Navbar from '../navbar/Navbarlay'
 
 
 function Signin() {
@@ -19,7 +20,6 @@ function Signin() {
               } else {
                 alert(errorMessage);
               }
-              console.log(error);
             });
         setTohome(true);
     }
@@ -28,6 +28,8 @@ function Signin() {
     }
     else{
         return (
+            <>
+            <Navbar />
             <div className="container" style={{paddingTop: '4%'}}>
                 <h1 style={{paddingBottom: '1%'}}>Sign In</h1>
                 <Form onSubmit={onLogin}>
@@ -45,6 +47,7 @@ function Signin() {
                     </Button>
                 </Form>
             </div>
+            </>
         );
     }
 }

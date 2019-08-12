@@ -1,15 +1,36 @@
-import React from 'react'
-import Navbar from '../navbar/Navbarlay'
-var divStyle = {
+import React, {useState, useEffect} from 'react'
+import firebase from '../../firebase'
+import Navbar from '../navbar/Navbarlay';
+import {Alert} from 'react-bootstrap'
+var divStyle =  {
    
     paddingTop: "20px",
     
   };
+
+function useAnnouncement(){
+    const [announcement, setAnnouncement] = useState([]);
+
+    useEffect(() =>{
+        const unsubscribe = firebase
+        .firestore().collection('announcements').onSnapshot((snapshot) => {
+            const newRescue = snapshot.docs.map((doc) =>({
+                id: doc.id,
+                ...doc.data()
+            }))
+            setAnnouncement(newRescue)
+        })
+        return () => unsubscribe()
+    }, [])
+    return announcement;
+}
+
 function NewAnnouncment() {
+    const announcement = useAnnouncement();
     return (
             <div>
             <Navbar/>
-            <div className="container" style={divStyle}>
+
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
@@ -17,59 +38,17 @@ function NewAnnouncment() {
                                 <h4 className="card-title mt-2">New Announcement</h4>
                             </header>
                             <article className="card-body">
-                            <form action="/newordersubmit">
-                                
-                                <div className="form-row">
-                                    
-                                    <div className="col form-group">
-                                        <label>Name</label>
-                                        <input name="id" type="text" className="form-control"/>	
-                                    </div> 
-                                    <div className="col form-group">
-                                        <label>Phone number</label>
-                                        <input name="sem" type="Number" className="form-control" placeholder=""/>
-                                    </div>
-                                </div> 
-                                <div className="form-row">
-                                    
-                                    <div className="col form-group">
-                                        <label>Email</label>
-                                        <input name="hostel" type="text" className="form-control" placeholder=""/>	
-                                    </div> 
-                                    <div className="col form-group">
-                                        <label>Announcement Type</label>
-                                        <input name="room" type="text" className="form-control" placeholder=""/>
-                                    </div>
-                                </div> 
-                        
-                                <div className="form-row">
-                                    
-                                    <div className="col form-group">
-                                        <label>Location</label>
-                                        <input name="pillow" type="text" className="form-control" placeholder=" "/>
-                                    </div>
-                                </div> 
-                                
-                                <div className="col form-group">
-                                        <label>Announcement Details</label>
-                                        <input name="pillow" type="text" className="form-control" placeholder=""/>
-                                </div>
-                                
-                                
-                                <hr/>
-                                <div className="form-group">
-                                    <button type="submit" className="btn btn-success btn-block"> Submit  </button>
-                                </div>
-                                                                
-                            </form>
-                    </article>
+                                {announcement.map((announcement) =>
+                                    <Alert variant="dark">
+                                        {announcement.details}
+
+                                    </Alert>
+                                )}
+                            </article>
+                        </div> 
+                    </div> 
+                </div>
             </div> 
-
-        </div> 
-
-        </div>
-        </div> 
-        </div>
     )
 }
 

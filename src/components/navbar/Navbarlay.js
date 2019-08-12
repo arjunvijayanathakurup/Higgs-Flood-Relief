@@ -35,6 +35,12 @@ function Navbarlay() {
                     <li className="nav-item">
                         <Nav.Link href="/volunteer" className="navStyle">Volunteer</Nav.Link>
                     </li>
+                    <li className="nav-item">
+                        <Nav.Link href="/newannouncement" className="navStyle">Announcement</Nav.Link>
+                    </li>
+                    <li className="nav-item">
+                        <Nav.Link href="/helpneeded" className="navStyle">Help Needed</Nav.Link>
+                    </li>
                     
                 </ul>
             </div>
@@ -51,7 +57,7 @@ function Navbarlay() {
                 <ul className="navbar-nav ml-auto">
                     
                     <li className="nav-item">
-                        <Nav.Link className="nav-link" href="/signin" className="navStyle2">Sign In</Nav.Link>
+                        <Nav.Link className="nav-link" href="/" className="navStyle2"></Nav.Link>
                     </li>
                 </ul>
             </div>

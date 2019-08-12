@@ -9,6 +9,7 @@ import About from './components/home/About';
 import './App.css';
 import Signin from './components/auth/Signin';
 import Admin from './components/admin/Admin';
+import Help from './components/help/Help'
 
 function App(){
 	return(
@@ -22,6 +23,8 @@ function App(){
 					<Route  path='/about' component = {About} />
 					<Route 	path='/admin' component={Admin} />
 					<Route  path='/newannouncement' component = {NewAnnouncment} />
+					<Route  path='/helpneeded' component = {Help} />
+
 
 				</Switch>
 			</div>
