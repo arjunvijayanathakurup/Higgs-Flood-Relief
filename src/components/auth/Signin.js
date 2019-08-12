@@ -28,8 +28,8 @@ function Signin() {
     }
     else{
         return (
-            <div className="container">
-                <h2>Login</h2>
+            <div className="container" style={{paddingTop: '4%'}}>
+                <h1 style={{paddingBottom: '1%'}}>Sign In</h1>
                 <Form onSubmit={onLogin}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Control type="email" placeholder="Enter email" value={username} onChange={e => setUsername(e.currentTarget.value)} required/>
@@ -40,7 +40,7 @@ function Signin() {
                     <Form.Group controlId="formBasicPassword">
                         <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.currentTarget.value)}  required/>
                     </Form.Group>
-                    <Button variant="success" size="lg" type="submit">
+                    <Button variant="secondary" size="md" type="submit">
                         Submit
                     </Button>
                 </Form>
