@@ -6,8 +6,12 @@
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "firebase": "^6.3.5",
+    "mdbreact": "^4.19.0",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.11",
+    "react-bootstrap-carousel": "^3.4.2",
+    "react-bootstrap-slider": "^2.2.2",
+    "react-bootstrap-table-next": "^3.1.7",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.0"
