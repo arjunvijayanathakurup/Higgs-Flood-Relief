@@ -46,11 +46,11 @@ function Help() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {rescues.map((rescue) =>
-                                        <tr>
+                                    {rescues.map((rescue, index) =>
+                                        <tr key={index}>
                                         <td>{rescue.name}</td>
                                         <td>{rescue.number}</td>
-                                        <td>{rescue.details}</td>
+                                        <td>{rescue.details?rescue.details:rescue.location}</td>
                                         </tr>
                                     )}
                                     </tbody>

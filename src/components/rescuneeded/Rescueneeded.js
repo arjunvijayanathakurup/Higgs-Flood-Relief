@@ -8,25 +8,20 @@ import { RadioGroup, RadioButton } from 'react-radio-buttons';
 function VolunteerRegistration() {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
-    const [lat, setLat] = useState('');
-    const [log, setLog] = useState('');
+    const [lat, setLat] = useState();
+    const [log, setLog] = useState();
     const [details, setDetails] = useState('');
     const [toHome, setTohome] = useState(false);
-    const [loc, setLocation] = useState('true');
-    console.log(loc);
-    function setradio()
-    {
-        if(loc)
-        {
-            setLocation(false);
-            setDetails("Enter location if not current location");
-        }
-        else
-        {
-            setDetails("Enter location");
-            setLocation(true);
-        }
+    const [loc, setLocation] = useState(false);
+
+
+    function showPosition(position){
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude)
+        setLat(position.coords.latitude);
+        setLog(position.coords.longitude);
     }
+
     function onSubmit(e){
         const regex = /<[^>]*script/;   
         const regexnum = /^\d*$/;
@@ -36,19 +31,14 @@ function VolunteerRegistration() {
             return <Redirect to="/" />
         }
         else{
-            if(details)
+            if(loc)
             {
-            if (navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(function(position){
-                    console.log(position.coords);
-                    // console.log(position.coords.longitude)
-                    setLat(position.coords.latitude);
-                    setLog(position.coords.longitude);
-                });
-            }
-            else{
-                console.log("location not allowed")
-            }
+                if (navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                }
+                else{
+                    console.log("location not allowed")
+                }
             }
             e.preventDefault()
             firebase
@@ -64,8 +54,8 @@ function VolunteerRegistration() {
             .then(() => {
                 setName('')
                 setNumber('')
-                setLat('')
-                setLog('')
+                setLat()
+                setLog()
                 setDetails('')
             })
             setTohome(true);
@@ -94,12 +84,12 @@ function VolunteerRegistration() {
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicChecbox">
-                    <Form.Check type="checkbox" label="use current location" onChange={e => setradio()} style={{color: 'black'}}/>
+                    <Form.Check type="checkbox" label="use current location" value={true} onChange={e => setLocation(e.currentTarget.value)} style={{color: 'black'}}/>
                 </Form.Group>   
                 <Form.Group controlId="formBasiclocation">
                     <Form.Text className="text-muted" >
                     </Form.Text>
-                    <Form.Control type="text" placeholder="Enter location if not current location" value={details}  onChange={e => setDetails(e.currentTarget.value)} />
+                    <Form.Control type="text" placeholder="Enter location for rescue" value={details}  onChange={e => setDetails(e.currentTarget.value)} />
                     <Form.Text className="text-muted" >
                     </Form.Text>
                 </Form.Group>
