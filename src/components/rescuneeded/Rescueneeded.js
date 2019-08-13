@@ -1,3 +1,4 @@
+import Geocode from "react-geocode";
 import React, {useState} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import firebase from 'firebase';
@@ -20,8 +21,39 @@ function VolunteerRegistration() {
         
         setLat(position.coords.latitude);
         setLog(position.coords.longitude);
+        Geocode.setApiKey("AIzaSyCTX5Ypfa4NiVPzL4eoAo-utYh7fr7nJpE");
+        Geocode.enableDebug(true);
+        Geocode.fromLatLng(position.coords.latitude, position.coords.longitude).then(
+            response => {
+              const address = response.results[0].formatted_address;
+              setDetails(address)
+              console.log(address);
+            },
+            error => {
+              console.error(error);
+              
+              const querry = "https://www.latlong.net/c/?lat="+position.coords.latitude+"&long=" + position.coords.longitude
+              setDetails(querry)
+              alert("Sorry We couldn't get your location. \nPlease enter manually. \nThank You") 
+            }
+          );
         console.log(position.coords.latitude);
         console.log(position.coords.longitude)
+    }
+
+    function handleChange(e){
+        
+        setLocation(e.target.checked)
+        if(e.target.checked)
+            {
+                if (navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                    
+                }
+                else{
+                    console.log("location not allowed")
+                }
+        }
     }
 
     function onSubmit(e){
@@ -33,15 +65,7 @@ function VolunteerRegistration() {
             return <Redirect to="/" />
         }
         else{
-            if(loc)
-            {
-                if (navigator.geolocation){
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                }
-                else{
-                    console.log("location not allowed")
-                }
-            }
+            
             e.preventDefault()
             firebase
             .firestore()
@@ -86,7 +110,7 @@ function VolunteerRegistration() {
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicChecbox">
-                    <Form.Check type="checkbox" label="use current location" value={true} onChange={e => setLocation(e.currentTarget.value)} style={{color: 'black'}}/>
+                    <Form.Check type="checkbox" label="use current location"  onChange={handleChange} style={{color: 'black'}}/>
                 </Form.Group>   
                 <Form.Group controlId="formBasiclocation">
                     <Form.Text className="text-muted" >
