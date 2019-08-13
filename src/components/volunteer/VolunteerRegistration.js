@@ -10,6 +10,7 @@ function VolunteerRegistration() {
     const [number, setNumber] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
+    const [district, setDistrict] = useState('');
     const [toHome, setTohome] = useState(false);
 
 
@@ -24,18 +25,20 @@ function VolunteerRegistration() {
             e.preventDefault()
             firebase
             .firestore()
-            .collection('higgs-flood-relief')
+            .collection('volunteer')
             .add({
                 name,
                 number,
                 email,
                 address,
+                district
             })
             .then(() => {
                 setName('')
                 setNumber('')
                 setEmail('')
                 setAddress('')
+                setDistrict('')
             })
             setTohome(true);
         }
@@ -69,7 +72,7 @@ function VolunteerRegistration() {
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Control type="text" placeholder="Enter District" value={address} onChange={e => setAddress(e.currentTarget.value)} required />
+                    <Form.Control type="text" placeholder="Enter District" value={district} onChange={e => setDistrict(e.currentTarget.value)} required />
                     <Form.Text className="text-muted">
                     </Form.Text>
                     <Form.Text className="text-muted">

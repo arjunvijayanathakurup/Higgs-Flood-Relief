@@ -42,7 +42,7 @@ const { SearchBar } = Search;
         keyField="id"
         data={ details }
         columns={ columns }
-        search={ { defaultSearch: '123' } }
+        search={ { defaultSearch: 'Kollam' } }
       >
         {
           props => (

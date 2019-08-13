@@ -14,7 +14,7 @@ function useAnnouncement(){
 
     useEffect(() =>{
         const unsubscribe = firebase
-        .firestore().collection('announcements').onSnapshot((snapshot) => {
+        .firestore().collection('notification').onSnapshot((snapshot) => {
             const newRescue = snapshot.docs.map((doc) =>({
                 id: doc.id,
                 ...doc.data()
@@ -41,7 +41,7 @@ function NewAnnouncment() {
                             <article className="card-body">
                                 {announcement.map((announcement) =>
                                     <Alert variant="dark">
-                                        {announcement.details}
+                                        {announcement.content}
 
                                     </Alert>
                                 )}

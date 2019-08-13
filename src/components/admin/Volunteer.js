@@ -1,43 +1,60 @@
-import React, { Component, useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.css'; 
+import React, {useState, useEffect} from 'react'
+import firebase from '../../firebase'
+import Navbar from '../navbar/Navbarlay';
+import {Alert, Table} from 'react-bootstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
-import firebase from '../../firebase';
-import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+var divStyle =  {
+   
+    paddingTop: "20px",
+    
+  };
 
+function useRescue(){
+    const [announcement, setAnnouncement] = useState([]);
 
-function HospitalTable() {
-  const { SearchBar } = Search;
-  const [details, setDetails] = useState([]);
-  useEffect(() =>{
+    useEffect(() =>{
         const unsubscribe = firebase
-        .firestore().collection('hospital').onSnapshot((snapshot) => {
+        .firestore().collection('volunteer').onSnapshot((snapshot) => {
             const newRescue = snapshot.docs.map((doc) =>({
                 ...doc.data()
             }))
-            setDetails(newRescue);
+            setAnnouncement(newRescue)
         })
         return () => unsubscribe()
     }, [])
-  
-    const columns= [{
-      dataField: 'district',
-      text: 'District'
-    },
+    return announcement;
+}
+
+function Volunteer() {
+    const { SearchBar } = Search;
+    const rescues = useRescue();
+    const columns= [
     {
       dataField: 'name',
-      text: 'Name'
+      text: 'Name',
+      sort: true
+      
     }, {
       dataField: 'number',
-      text: 'number',
-      sort: true
+      text: 'Number',
+    
+    }, {
+      dataField: 'email',
+      text: 'Email',
+    },{
+      dataField: 'address',
+      text: 'Address',
+    },{
+      dataField: 'district',
+      text: 'District',
     }];
-  
     return (
+            
       <div className="container" style={{ marginTop: 50 }}>
       <ToolkitProvider
         keyField="id"
-        data={ details }
+        data={ rescues }
         columns={ columns }
         search={ { defaultSearch: 'Kollam' } }
       >
@@ -55,7 +72,8 @@ function HospitalTable() {
         }
       </ToolkitProvider>
       </div>
-    );
-  
+   
+    )
 }
-export default HospitalTable;
+
+export default Volunteer;

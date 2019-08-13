@@ -33,7 +33,7 @@ function Adminnotiform() {
         <>
             <Row>
                 <Col className="formnotif">
-                    <h1>Add Information</h1>
+                    <h1>Add Annoucement</h1>
                     <Form onSubmit={onSubmit}>
                         <Form.Group controlId="formBasicPassword">
                             <Form.Control type="text" placeholder="Content" value={content} onChange={e => setContent(e.currentTarget.value)}  required/>
@@ -43,7 +43,7 @@ function Adminnotiform() {
                         </Button>
                     </Form>
                 </Col>
-                <Adminaid />
+                
             </Row>
         </>
     )
