@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import firebase from '../../firebase';
 import { Redirect } from 'react-router-dom';
 import {Form, Button} from 'react-bootstrap';
 import Navbar from '../navbar/Navbarlay'
+import { AuthContext } from '../../auth';
+
 
 
 function Signin() {
@@ -23,7 +25,9 @@ function Signin() {
             });
         setTohome(true);
     }
-    if (toHome){
+
+    const {currentUser} = useContext(AuthContext);
+    if (currentUser){
         return <Redirect to="/admin" />
     }
     else{

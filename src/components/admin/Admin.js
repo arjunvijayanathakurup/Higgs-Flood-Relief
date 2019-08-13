@@ -7,10 +7,6 @@ import {Redirect} from 'react-router-dom';
 import Adminnoform from './Adminnotiform';
 
 function Admin() {
-    const currentuser = '';
-    firebase.auth().onAuthStateChanged((user) => {
-        if(user){
-            currentuser = firebase.auth().currentUser.displayName; 
             return (
                 <div>
                     <Navbar currentUser/>
@@ -119,20 +115,13 @@ function Admin() {
                         </Row>
                         <Adminnoform />
                     </Container>
+                    <hr/>
+                    <Button variant="danger" size="md" onClick={() => firebase.auth().signOut()}>
+                        Signout
+                    </Button>
                 </div>
             )
-        }
-        else{
-            return null;
-        }
-    });
-    return(
-        <>
-        <Navbar />
-        <Alert variant="danger">Access Denied</Alert>
-        </ >
-    );
-    
+        
 }
 
 export default Admin;
