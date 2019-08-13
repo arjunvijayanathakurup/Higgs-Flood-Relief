@@ -9,18 +9,19 @@ import Footer from '../footer/Footer';
 function VolunteerRegistration() {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
-    const [lat, setLat] = useState();
-    const [log, setLog] = useState();
+    const [lat, setLat] = useState(null);
+    const [log, setLog] = useState(null);
     const [details, setDetails] = useState('');
     const [toHome, setTohome] = useState(false);
     const [loc, setLocation] = useState(false);
 
 
     function showPosition(position){
-        console.log(position.coords.latitude);
-        console.log(position.coords.longitude)
+        
         setLat(position.coords.latitude);
         setLog(position.coords.longitude);
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude)
     }
 
     function onSubmit(e){

@@ -5,13 +5,12 @@ import {Redirect} from 'react-router-dom';
 import Adminaid from './Adminaid'
 
 function Adminnotiform() {
-    const [heading, setHeading] = useState('');
     const [content, setContent] = useState('');
     const [home, setTohome] = useState('');
 
     function onSubmit(e){
         const regex = /<[^>]*script/;   
-        if(heading.match(regex) || content.match(regex))
+        if(content.match(regex))
         {   
             return <Redirect to="/" />
         }
@@ -22,11 +21,9 @@ function Adminnotiform() {
             .firestore()
             .collection('notification')
             .add({
-                heading,
                 content
             })
             .then(() => {
-                setHeading('')
                 setContent('')
             })
             setTohome(true);
@@ -36,13 +33,8 @@ function Adminnotiform() {
         <>
             <Row>
                 <Col className="formnotif">
+                    <h1>Add Information</h1>
                     <Form onSubmit={onSubmit}>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Control type="text" placeholder="Heading" value={heading} onChange={e => setHeading(e.currentTarget.value)} required/>
-                            <Form.Text className="text-muted">
-                            </Form.Text>
-                        </Form.Group>
-
                         <Form.Group controlId="formBasicPassword">
                             <Form.Control type="text" placeholder="Content" value={content} onChange={e => setContent(e.currentTarget.value)}  required/>
                         </Form.Group>
