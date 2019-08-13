@@ -30,7 +30,7 @@ function NewAnnouncment() {
     const announcement = useAnnouncement();
     return (
             <div>
-            <Navbar/>
+            
 
                 <div className="row justify-content-center">
                     <div className="col-md-8">

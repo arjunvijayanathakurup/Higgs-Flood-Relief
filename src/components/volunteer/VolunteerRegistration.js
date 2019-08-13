@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import {Form, Button} from 'react-bootstrap';
 import firebase from '../../firebase';
 import { Redirect } from 'react-router-dom';
-import Navbar from '../navbar/Navbarlay'
+import Navbar from '../navbar/Navbarlay';
+import Footer from '../footer/Footer';
 
 function VolunteerRegistration() {
     const [name, setName] = useState('');
@@ -68,6 +69,15 @@ function VolunteerRegistration() {
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
+                    <Form.Control type="text" placeholder="Enter District" value={address} onChange={e => setAddress(e.currentTarget.value)} required />
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
                     <Form.Control type="text" placeholder="Enter Home Address" value={address} onChange={e => setAddress(e.currentTarget.value)} required />
                     <Form.Text className="text-muted">
                     </Form.Text>
@@ -85,6 +95,7 @@ function VolunteerRegistration() {
                 </Button>
             </Form>
             </div>
+            <Footer/>
             </>
         )
     }

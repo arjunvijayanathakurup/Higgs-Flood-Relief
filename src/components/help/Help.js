@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import firebase from '../../firebase'
 import Navbar from '../navbar/Navbarlay';
-import {Alert, Table} from 'react-bootstrap'
+import {Alert, Table} from 'react-bootstrap';
+import BootstrapTable from 'react-bootstrap-table-next';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 var divStyle =  {
    
     paddingTop: "20px",
@@ -15,7 +17,6 @@ function useRescue(){
         const unsubscribe = firebase
         .firestore().collection('rescue-needed').onSnapshot((snapshot) => {
             const newRescue = snapshot.docs.map((doc) =>({
-                id: doc.id,
                 ...doc.data()
             }))
             setAnnouncement(newRescue)
@@ -26,41 +27,45 @@ function useRescue(){
 }
 
 function Help() {
+    const { SearchBar } = Search;
     const rescues = useRescue();
+    const columns= [
+    {
+      dataField: 'name',
+      text: 'Name',
+      
+    }, {
+      dataField: 'number',
+      text: 'Number',
+    
+    }, {
+      dataField: 'details',
+      text: 'Details',
+      sort: true
+    }];
     return (
+            
+      <div className="container" style={{ marginTop: 50 }}>
+      <ToolkitProvider
+        keyField="id"
+        data={ rescues }
+        columns={ columns }
+        search
+      >
+        {
+          props => (
             <div>
-            <Navbar/>
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card">
-                            <header className="card-header"> 
-                                <h4 className="card-title mt-2">Help Needed</h4>
-                            </header>
-                            <article className="card-body">
-                                <Table striped bordered hover>
-                                    <thead>
-                                        <tr>
-                                        <th>Name</th>
-                                        <th>Number</th>
-                                        <th>Details/Location</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {rescues.map((rescue, index) =>
-                                        <tr key={index}>
-                                        <td>{rescue.name}</td>
-                                        <td>{rescue.number}</td>
-                                        <td>{rescue.details?rescue.details:rescue.location}</td>
-                                        </tr>
-                                    )}
-                                    </tbody>
-                                    </Table>
-
-                            </article>
-                        </div> 
-                    </div> 
-                </div>
-            </div> 
+            <h3>Search:</h3>
+              <SearchBar { ...props.searchProps } />
+              <hr />
+              <BootstrapTable
+                { ...props.baseProps }
+              />
+            </div>
+          )
+        }
+      </ToolkitProvider>
+      </div>
    
     )
 }

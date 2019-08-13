@@ -27,16 +27,13 @@ function Navbarlay() {
                         <Nav.Link href ="/" className="navStyle3" >Home</Nav.Link>
                     </li>
                     <li className="nav-item">
+                        <Nav.Link href="/dashboard" className="navStyle">Dashboard</Nav.Link>
+                    </li>
+                    <li className="nav-item">
                         <Nav.Link href="/rescue" className="navStyle">Rescue</Nav.Link>
                     </li>
                     <li className="nav-item">
                         <Nav.Link href="/volunteer" className="navStyle">Volunteer</Nav.Link>
-                    </li>
-                    <li className="nav-item">
-                        <Nav.Link href="/newannouncement" className="navStyle">Announcement</Nav.Link>
-                    </li>
-                    <li className="nav-item">
-                        <Nav.Link href="/helpneeded" className="navStyle">Help Needed</Nav.Link>
                     </li>
                     <li className="nav-item">
                         <Nav.Link href="/about" className="navStyle">About</Nav.Link>

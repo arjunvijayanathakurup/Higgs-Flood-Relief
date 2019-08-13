@@ -1,28 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'; 
 import BootstrapTable from 'react-bootstrap-table-next';
+import firebase from '../../firebase';
+import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 
-class HospitalTable extends Component {
-  state = {
-    products: [
-      {
-        District: 1,
-        name: 'TV',
-        number: 1000
-      },
-      {
-        District: 2,
-        name: 'Mobile',
-        number: 500
-      },
-      {
-        District: 3,
-        name: 'Book',
-        number: 20
-      },
-    ],
-    columns: [{
-      dataField: 'District',
+
+function HospitalTable() {
+  const { SearchBar } = Search;
+  const [details, setDetails] = useState([]);
+  useEffect(() =>{
+        const unsubscribe = firebase
+        .firestore().collection('hospital').onSnapshot((snapshot) => {
+            const newRescue = snapshot.docs.map((doc) =>({
+                ...doc.data()
+            }))
+            setDetails(newRescue);
+        })
+        return () => unsubscribe()
+    }, [])
+  
+    const columns= [{
+      dataField: 'district',
       text: 'District'
     },
     {
@@ -32,21 +31,31 @@ class HospitalTable extends Component {
       dataField: 'number',
       text: 'number',
       sort: true
-    }]
-  } 
+    }];
   
-  render() {
     return (
       <div className="container" style={{ marginTop: 50 }}>
-        <BootstrapTable 
-        striped
-        hover
-        keyField='id' 
-        data={ this.state.products } 
-        columns={ this.state.columns } />
+      <ToolkitProvider
+        keyField="id"
+        data={ details }
+        columns={ columns }
+        search={ { defaultSearch: '123' } }
+      >
+        {
+          props => (
+            <div>
+            <h3>Search:</h3>
+              <SearchBar { ...props.searchProps } />
+              <hr />
+              <BootstrapTable
+                { ...props.baseProps }
+              />
+            </div>
+          )
+        }
+      </ToolkitProvider>
       </div>
     );
-  }
+  
 }
-
 export default HospitalTable;

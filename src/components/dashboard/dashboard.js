@@ -7,7 +7,7 @@ import Announcment from '../announcment/AnnouncmentSlider';
 import TabList from '../Tab/Tab';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import './dashboard.css';
-
+import Footer from '../footer/Footer';
 
 function VolunteerRegistration() {
     
@@ -17,6 +17,7 @@ function VolunteerRegistration() {
             <div className="container">
                 <TabList/>
             </div>
+            <Footer/>
             </>
         )
 }

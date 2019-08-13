@@ -1,36 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'; 
 import BootstrapTable from 'react-bootstrap-table-next';
+import firebase from '../../firebase';
+import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 
-class TrainTable extends Component {
-  state = {
-    products: [
-      {
-        tno: 1,
-        name: 'TV',
-        date: 1000,
-        status:"Running"
-      },
-      {
-        tno: 2,
-        name: 'Mobile',
-        date: 500,
-        status:"Running"
-      },
-      {
-        tno: 3,
-        name: 'Book',
-        date: 20,
-        status:"Running"
-      },
-    ],
-    columns: [{
+function TrainTable() {
+  const { SearchBar } = Search;
+    const columns= [{
       dataField: 'tno',
-      text: 'Train No'
+      text: 'Train No',
+     
     },
     {
       dataField: 'name',
-      text: 'Name'
+      text: 'Name',
+      
     }, {
       dataField: 'date',
       text: 'Date',
@@ -39,21 +24,43 @@ class TrainTable extends Component {
       dataField: 'status',
       text: 'Status',
       sort: true
-    }]
-  } 
+    }];
+  const [details, setDetails] = useState([]);
+  useEffect(() =>{
+        const unsubscribe = firebase
+        .firestore().collection('train').onSnapshot((snapshot) => {
+            const newRescue = snapshot.docs.map((doc) =>({
+                ...doc.data()
+            }))
+            setDetails(newRescue);
+        })
+        return () => unsubscribe()
+    }, []);
   
-  render() {
     return (
       <div className="container" style={{ marginTop: 50 }}>
-        <BootstrapTable 
-        striped
-        hover
-        keyField='id' 
-        data={ this.state.products } 
-        columns={ this.state.columns } />
+      <ToolkitProvider
+        keyField="id"
+        data={ details }
+        columns={ columns }
+        search={ { defaultSearch: '123' } }
+      >
+        {
+          props => (
+            <div>
+            <h3>Search:</h3>
+              <SearchBar { ...props.searchProps } />
+              <hr />
+              <BootstrapTable
+                { ...props.baseProps }
+              />
+            </div>
+          )
+        }
+      </ToolkitProvider>
       </div>
     );
-  }
+  
 }
 
 export default TrainTable;

@@ -7,90 +7,69 @@ import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import Footer from '../footer/Footer';
 
 function VolunteerRegistration() {
+    const [district, setDistric] = useState('');
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
-    const [lat, setLat] = useState();
-    const [log, setLog] = useState();
-    const [details, setDetails] = useState('');
     const [toHome, setTohome] = useState(false);
-    const [loc, setLocation] = useState(false);
 
 
     function showPosition(position){
-        console.log(position.coords.latitude);
-        console.log(position.coords.longitude)
-        setLat(position.coords.latitude);
-        setLog(position.coords.longitude);
+        
     }
 
     function onSubmit(e){
         const regex = /<[^>]*script/;   
         const regexnum = /^\d*$/;
         
-        if(name.match(regex) || number.match(regex) || details.match(regex))
+        if(name.match(regex) || number.match(regex) || district.match(regex))
         {   
-            return <Redirect to="/" />
+            return <Redirect to="/add_hospital" />
         }
         else{
-            if(loc)
-            {
-                if (navigator.geolocation){
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                }
-                else{
-                    console.log("location not allowed")
-                }
-            }
+            
             e.preventDefault()
             firebase
             .firestore()
-            .collection('rescue-needed')
+            .collection('hospital')
             .add({
+                district,
                 name,
-                number,
-                lat,
-                log,
-                details
+                number
             })
             .then(() => {
+                setDistric('')
                 setName('')
                 setNumber('')
-                setLat()
-                setLog()
-                setDetails('')
             })
             setTohome(true);
         }
     }
     if (toHome){
-        return <Redirect to="/" />
+        return <Redirect to="/add_hospital" />
     }
     else
     {
         return (
             <>
             <Navbar />
-            <h1 style={{marginTop: '3%',marginBottom:'20px', textAlign: 'center'}}>Rescue Needed</h1>
+            <h1 style={{marginTop: '3%',marginBottom:'20px', textAlign: 'center'}}>Add hospital</h1>
             <div className="container">
                 
             <Form onSubmit={onSubmit}>
                 <Form.Group controlId="formBasicname">
-                    <Form.Control type="text" placeholder="Enter Full name" value={name} autoFocus onChange={e => setName(e.currentTarget.value)} required/>
+                    <Form.Control type="text" placeholder="Enter District" value={district} autoFocus onChange={e => setDistric(e.currentTarget.value)} required/>
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicnumber">
-                    <Form.Control type="text" placeholder="Enter phone number" value={number}  onChange={e => setNumber(e.currentTarget.value)}  required/>
+                    <Form.Control type="text" placeholder="Enter Name" value={name}  onChange={e => setName(e.currentTarget.value)}  required/>
                     <Form.Text className="text-muted">
                     </Form.Text>
-                </Form.Group>
-                <Form.Group controlId="formBasicChecbox">
-                    <Form.Check type="checkbox" label="use current location" value={true} onChange={e => setLocation(e.currentTarget.value)} style={{color: 'black'}}/>
                 </Form.Group>   
                 <Form.Group controlId="formBasiclocation">
                     <Form.Text className="text-muted" >
                     </Form.Text>
-                    <Form.Control type="text" placeholder="Enter location for rescue" value={details}  onChange={e => setDetails(e.currentTarget.value)} />
+                    <Form.Control type="text" placeholder="Enter Number" value={number}  onChange={e => setNumber(e.currentTarget.value)} />
                     <Form.Text className="text-muted" >
                     </Form.Text>
                 </Form.Group>

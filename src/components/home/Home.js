@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../navbar/Navbarlay'
 import {Link} from 'react-router-dom'
 import './home.css'
+import Footer from '../footer/Footer';
 
  function Home() {
     return (
@@ -19,6 +20,7 @@ import './home.css'
                     </Link>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }
