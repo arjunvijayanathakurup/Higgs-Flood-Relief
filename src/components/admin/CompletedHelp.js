@@ -38,6 +38,7 @@ function CompletedHelp() {
                 if(v.number===content)
                     firebase.firestore().collection('rescue-needed').doc(v.id).delete();
             }
+            setContent('');
             
         }
     }
