@@ -48,7 +48,7 @@ function CompletedHelp() {
                     <h1>Completed Help</h1>
                     <Form >
                         <Form.Group controlId="formBasicNumber">
-                            <Form.Control type="text" placeholder="Content" value={content} onChange={e => setContent(e.currentTarget.value)}  required/>
+                            <Form.Control type="text" placeholder="Number" value={content} onChange={e => setContent(e.currentTarget.value)}  required/>
                         </Form.Group>
                         <Button variant="success" size="lg" onClick={onSubmit}>
                             Submit
