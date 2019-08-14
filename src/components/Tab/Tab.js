@@ -5,7 +5,7 @@ import HospitalTable from '../table/HospitalTable';
 import CampTable from '../table/CampTable';
 import TrainTable from '../table/TrainTable';
 import Help from '../help/Help';
-import Announcment from '../announcment/NewAnnouncment';
+import Announcment from '../announcment/AnnouncmentSlider';
 class TabList extends React.Component {
   constructor(props) {
     super();
@@ -21,7 +21,7 @@ class TabList extends React.Component {
   render() {
     return (
       <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
-        <Tab eventKey={1} title="Announcments"><Announcment/></Tab>
+        <Tab eventKey={1} title="Live Updates"><Announcment/></Tab>
         <Tab eventKey={2} title="Help Needed"><Help/></Tab>
         <Tab eventKey={3} title="Police"><PoliceTable/></Tab>
         <Tab eventKey={4} title="Hospitals"><HospitalTable/></Tab>

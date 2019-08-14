@@ -55,7 +55,7 @@ function VolunteerRegistration() {
             <h1 style={{marginTop: '3%',marginBottom:'20px', textAlign: 'center'}}>Add Camp</h1>
             <div className="container">
                 
-            <Form onSubmit={onSubmit}>
+            <Form >
                 <Form.Group controlId="formBasicname">
                     <Form.Control type="text" placeholder="Enter District" value={district} autoFocus onChange={e => setDistric(e.currentTarget.value)} required/>
                     <Form.Text className="text-muted">
@@ -73,7 +73,7 @@ function VolunteerRegistration() {
                     <Form.Text className="text-muted" >
                     </Form.Text>
                 </Form.Group>
-                <Button variant="secondary" size="md" type="submit" style={{ marginRight: '10px',marginTop: '10px'}}>
+                <Button variant="secondary" size="md" onClick={onSubmit} style={{ marginRight: '10px',marginTop: '10px'}}>
                     Submit
                 </Button>
                 <Button variant="light" size="md" type="cancel" style={{ marginTop: '10px'}}>

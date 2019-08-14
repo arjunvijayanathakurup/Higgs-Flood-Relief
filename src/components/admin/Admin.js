@@ -6,6 +6,7 @@ import firebase from '../../firebase';
 import {Redirect} from 'react-router-dom';
 import Adminnoform from './Adminnotiform';
 import Admintab from './admintab';
+import CompletedHelp from './CompletedHelp';
 import { Tab, Tabs } from 'react-bootstrap';
 
 function Admin() {
@@ -15,6 +16,7 @@ function Admin() {
                     <Container>
                     <Admintab/>
                     <Adminnoform />
+                    <CompletedHelp/>
                     </Container>
                     <hr/>
                     <Button variant="danger" size="md" onClick={() => firebase.auth().signOut()}>

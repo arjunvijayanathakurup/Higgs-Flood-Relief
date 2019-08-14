@@ -1,8 +1,8 @@
 
-import React, {useState, useEffect} from 'react'
-import firebase from '../../firebase'
+import React, {useState, useEffect} from 'react';
+import firebase from '../../firebase';
 import Navbar from '../navbar/Navbarlay';
-import {Alert} from 'react-bootstrap'
+import {Alert} from 'react-bootstrap';
 var divStyle =  {
    
     paddingTop: "20px",

@@ -6,6 +6,7 @@ import Adminaid from './Adminaid'
 
 function Adminnotiform() {
     const [content, setContent] = useState('');
+    const [head, setHead] = useState('');
     const [home, setTohome] = useState('');
 
     function onSubmit(e){
@@ -21,9 +22,11 @@ function Adminnotiform() {
             .firestore()
             .collection('notification')
             .add({
+                head,
                 content
             })
             .then(() => {
+                setHead('')
                 setContent('')
             })
             setTohome(true);
@@ -34,11 +37,14 @@ function Adminnotiform() {
             <Row>
                 <Col className="formnotif">
                     <h1>Add Annoucement</h1>
-                    <Form onSubmit={onSubmit}>
+                    <Form >
+                        <Form.Group controlId="formBasicName">
+                            <Form.Control type="text" placeholder="Heading" value={head} onChange={e => setHead(e.currentTarget.value)}  required/>
+                        </Form.Group>
                         <Form.Group controlId="formBasicPassword">
                             <Form.Control type="text" placeholder="Content" value={content} onChange={e => setContent(e.currentTarget.value)}  required/>
                         </Form.Group>
-                        <Button variant="success" size="lg" type="submit">
+                        <Button variant="success" size="lg" onClick={onSubmit}>
                             Submit
                         </Button>
                     </Form>
