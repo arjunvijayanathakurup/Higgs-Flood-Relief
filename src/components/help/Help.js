@@ -58,9 +58,11 @@ function Help() {
             <h3>Search:</h3>
               <SearchBar { ...props.searchProps } />
               <hr />
-              <BootstrapTable
-                { ...props.baseProps }
-              />
+              <div style={{overflow: 'auto'}}>
+                <BootstrapTable 
+                  { ...props.baseProps }
+                />
+              </div>
             </div>
           )
         }

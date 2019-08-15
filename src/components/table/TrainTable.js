@@ -43,7 +43,7 @@ function TrainTable() {
         keyField="id"
         data={ details }
         columns={ columns }
-        search={ { defaultSearch: '123' } }
+        search={ { defaultSearch: '' } }
       >
         {
           props => (
@@ -51,9 +51,11 @@ function TrainTable() {
             <h3>Search:</h3>
               <SearchBar { ...props.searchProps } />
               <hr />
-              <BootstrapTable
-                { ...props.baseProps }
-              />
+              <div style={{overflow: 'auto'}}>
+                <BootstrapTable 
+                  { ...props.baseProps }
+                />
+              </div>
             </div>
           )
         }

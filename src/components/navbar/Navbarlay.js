@@ -27,6 +27,9 @@ function Navbarlay() {
                         <Nav.Link href ="/" className="navStyle3" >Home</Nav.Link>
                     </li>
                     <li className="nav-item">
+                        <Nav.Link href="/about" className="navStyle">About</Nav.Link>
+                    </li>
+                    <li className="nav-item">
                         <Nav.Link href="/dashboard" className="navStyle">Dashboard</Nav.Link>
                     </li>
                     <li className="nav-item">
@@ -35,14 +38,12 @@ function Navbarlay() {
                     <li className="nav-item">
                         <Nav.Link href="/volunteer" className="navStyle">Volunteer</Nav.Link>
                     </li>
-                    <li className="nav-item">
-                        <Nav.Link href="/about" className="navStyle">About</Nav.Link>
-                    </li>
+                    
                     
                 </ul>
             </div>
             <div className="mx-auto order-0">
-            <Navbar.Brand link to="https://www.higgs.in" ><img src="./logowhite.png" alt="not loaded" style={{width:"190px", height: "70px"}}/>
+            <Navbar.Brand link href="/" ><img src="./logowhite.png" alt="not loaded" style={{width:"190px", height: "70px"}}/>
             {/* <Navbar.Brand className="navbar-brand mx-auto" href="/">  Human Foundation &nbsp; </Navbar.Brand> */}
             </Navbar.Brand>
                 

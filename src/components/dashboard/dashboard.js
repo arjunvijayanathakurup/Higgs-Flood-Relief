@@ -14,10 +14,10 @@ function VolunteerRegistration() {
         return (
             <>
             <Navbar />
-            <div className="container">
+            <div className="container" style={{marginBottom: '35px'}}>
                 <TabList/>
             </div>
-            <Footer/>
+            <Footer style={{marginTop: '40px'}}/>
             </>
         )
 }

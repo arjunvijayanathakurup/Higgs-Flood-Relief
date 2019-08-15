@@ -96,7 +96,7 @@ function VolunteerRegistration() {
             <>
             <Navbar />
             <h1 style={{marginTop: '3%',marginBottom:'20px', textAlign: 'center'}}>Rescue Needed</h1>
-            <div className="container">
+            <div className="container" style={{marginBottom: '30px'}}>
                 
             <Form onSubmit={onSubmit}>
                 <Form.Group controlId="formBasicname">
@@ -127,7 +127,7 @@ function VolunteerRegistration() {
                 </Button>
             </Form>
             </div>
-            <Footer/>
+            <Footer style={{marginTop: '30px'}}/>
             </>
         )
     }

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 function Footer(){
 	return(
-	<footer class="app-footer" style={{backgroundColor: '#343a40', color:'rgba(255, 255, 255, 0.5)'}}>
+	<footer class="app-footer" style={{backgroundColor: '#343a40  ', color:'rgba(255, 255, 255, 0.5)'}}>
   <div>
     <span>&copy; 2019 The Human Foundation.</span>
   </div>

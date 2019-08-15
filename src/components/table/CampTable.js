@@ -42,7 +42,7 @@ const { SearchBar } = Search;
         keyField="id"
         data={ details }
         columns={ columns }
-        search={ { defaultSearch: 'Kollam' } }
+        search={ { defaultSearch: '' } }
       >
         {
           props => (
@@ -50,9 +50,11 @@ const { SearchBar } = Search;
             <h3>Search:</h3>
               <SearchBar { ...props.searchProps } />
               <hr />
-              <BootstrapTable
-                { ...props.baseProps }
-              />
+              <div style={{overflow: 'auto'}}>
+                <BootstrapTable 
+                  { ...props.baseProps }
+                />
+              </div>
             </div>
           )
         }

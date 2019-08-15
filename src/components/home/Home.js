@@ -16,14 +16,14 @@ import Footer from '../footer/Footer';
                 </div>
                 <div class="col-sm-6 yellow-square">
                     <Link to="/rescue">
-                        <h1 class="title-header"> Offer Help? </h1>
+                        <h1 class="title-header"> Offer Help! </h1>
                     </Link>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6 red-square">
                     <Link to="/helpneeded">
-                    <h1 class="title-header"> Help Needed?</h1>
+                    <h1 class="title-header">To be Saved...</h1>
                     </Link>
                 </div>
                 <div class="col-sm-6 blue-square">

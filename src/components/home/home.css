@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Neucha&display=swap');
 .title-header{
   color: white;
   text-align: center;
@@ -8,6 +8,8 @@
   height: 50%;
   width: 50%;
   margin: -10% 0 0 -25%;
+  font-family: 'Neucha', cursive;
+  font-size: 3em
 }
 .green-square {
   background: url(./floater.jpeg);
