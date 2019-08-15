@@ -5,9 +5,9 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 30%;
+  height: 50%;
   width: 50%;
-  margin: -15% 0 0 -25%;
+  margin: -10% 0 0 -25%;
 }
 .green-square {
   background: url(./floater.jpeg);
@@ -15,6 +15,24 @@
   height: 84vh;
   margin: 0 auto;
   background-size: cover;
+  background-repeat: no-repeat;
+}
+.blue-square {
+  background: url(https://www.itresourcescorp.com/wp-content/uploads/2019/05/blur-codes-coding-577585.jpg);
+  width: 95%;
+  height: 84vh;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.red-square {
+  background: url(https://tonyevans.org/wp-content/uploads/2018/05/Being-Saved-from-Drowning-Article-862x431.jpg);
+  width: 95%;
+  height: 84vh;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: right;
   background-repeat: no-repeat;
 }
 .row.col-sm-6{

@@ -20,6 +20,18 @@ import Footer from '../footer/Footer';
                     </Link>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-6 red-square">
+                    <Link to="/helpneeded">
+                    <h1 class="title-header"> Help Needed?</h1>
+                    </Link>
+                </div>
+                <div class="col-sm-6 blue-square">
+                    <Link to="/dashboard">
+                        <h1 class="title-header"> Updates </h1>
+                    </Link>
+                </div>
+            </div>
             <Footer/>
         </div>
     )
